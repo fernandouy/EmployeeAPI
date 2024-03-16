@@ -1,12 +1,12 @@
-import express from "express";
+const express = require("express");
 
-import {
+const {
   createEmployee,
   deleteEmployee,
   getEmployeeById,
   getEmployees,
   updateEmployee,
-} from "../controllers/employeeController";
+} = require("../controllers/employeeController");
 
 const router = express.Router();
 
@@ -17,4 +17,4 @@ router
   .put("/:id", updateEmployee)
   .delete("/:id", deleteEmployee);
 
-export default router;
+module.exports = router;

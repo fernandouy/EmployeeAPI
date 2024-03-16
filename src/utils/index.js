@@ -1,9 +1,11 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
-export async function connectDatabase(uri) {
+async function connectDatabase(uri) {
   try {
     await mongoose.connect(uri);
   } catch (error) {
     console.log(error);
   }
 }
+
+module.exports = { connectDatabase }

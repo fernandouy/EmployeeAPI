@@ -1,14 +1,9 @@
-import CustomError from "../utils/CustomError";
-import dotenv from "dotenv";
+const CustomError = require("../utils/CustomError");
+const dotenv = require("dotenv");
 
 dotenv.config();
 
-const errorHandler = (
-  error,
-  req,
-  res,
-  next
-) => {
+const errorHandler = (error, req, res, next) => {
   if (error instanceof CustomError) {
     return res.status(error.statusCode).json({
       message: error.message,
@@ -17,7 +12,7 @@ const errorHandler = (
     });
   }
 
-  return res.status(500).json({ message: error.message, status: 500});
+  return res.status(500).json({ message: error.message, status: 500 });
 };
 
-export default errorHandler;
+module.exports = { errorHandler };

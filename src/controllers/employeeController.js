@@ -1,24 +1,19 @@
-import Employee from "../models/employee";
-import CustomError from "../utils/CustomError";
+const Employee = require("../models/employee");
+const { CustomError } = require("../utils/CustomError");
 
-export const getEmployees = async (
-  req,
-  res,
-  next
-) => {
+const getEmployees = async (req, res, next) => {
   const employees = await Employee.find();
   res.json(employees);
 };
 
-export const createEmployee = async (
-  req,
-  res,
-  next
-) => {
+const createEmployee = async (req, res, next) => {
   const { name, position, level, salary } = req.body;
   try {
     if (!name || !position || !level || !salary) {
-      throw new CustomError("All fields 'name', 'position', 'level', 'salary' are required", 400);
+      throw new CustomError(
+        "All fields 'name', 'position', 'level', 'salary' are required",
+        400
+      );
     }
     const newEmployee = await Employee.create({
       name,
@@ -32,11 +27,7 @@ export const createEmployee = async (
   }
 };
 
-export const getEmployeeById = async (
-  req,
-  res,
-  next
-) => {
+const getEmployeeById = async (req, res, next) => {
   const { id } = req.params;
   try {
     const employee = await Employee.findById(id);
@@ -49,11 +40,7 @@ export const getEmployeeById = async (
   }
 };
 
-export const updateEmployee = async (
-  req,
-  res,
-  next
-) => {
+const updateEmployee = async (req, res, next) => {
   const { id } = req.params;
   const { name, position, level, salary } = req.body;
   try {
@@ -76,11 +63,7 @@ export const updateEmployee = async (
   }
 };
 
-export const deleteEmployee = async (
-  req,
-  res,
-  next
-) => {
+const deleteEmployee = async (req, res, next) => {
   const { id } = req.params;
 
   try {
@@ -92,4 +75,12 @@ export const deleteEmployee = async (
   } catch (error) {
     next(error);
   }
+};
+
+module.exports = {
+  getEmployees,
+  createEmployee,
+  getEmployeeById,
+  updateEmployee,
+  deleteEmployee,
 };

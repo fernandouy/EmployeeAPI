@@ -1,9 +1,10 @@
-import express, { Express, Request, Response } from "express";
-import cors from "cors";
-import dotenv from "dotenv";
-import employeeRoutes from "./routes/employeeRoutes";
-import { connectDatabase } from "./utils";
-import errorHandler from "./middlewares/errorHandler";
+const express = require("express");
+const cors = require("cors");
+const dotenv = require("dotenv");
+
+const employeeRoutes = require("./routes/employeeRoutes");
+const { connectDatabase } = require("./utils");
+const { errorHandler } = require("./middlewares/errorHandler");
 
 dotenv.config();
 
