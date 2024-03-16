@@ -1,20 +1,19 @@
 import Employee from "../models/employee";
-import { NextFunction, Request, Response } from "express";
 import CustomError from "../utils/CustomError";
 
 export const getEmployees = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
+  req,
+  res,
+  next
 ) => {
   const employees = await Employee.find();
   res.json(employees);
 };
 
 export const createEmployee = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
+  req,
+  res,
+  next
 ) => {
   const { name, position, level, salary } = req.body;
   try {
@@ -34,9 +33,9 @@ export const createEmployee = async (
 };
 
 export const getEmployeeById = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
+  req,
+  res,
+  next
 ) => {
   const { id } = req.params;
   try {
@@ -51,9 +50,9 @@ export const getEmployeeById = async (
 };
 
 export const updateEmployee = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
+  req,
+  res,
+  next
 ) => {
   const { id } = req.params;
   const { name, position, level, salary } = req.body;
@@ -78,9 +77,9 @@ export const updateEmployee = async (
 };
 
 export const deleteEmployee = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
+  req,
+  res,
+  next
 ) => {
   const { id } = req.params;
 

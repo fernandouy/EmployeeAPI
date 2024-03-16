@@ -7,7 +7,7 @@ import errorHandler from "./middlewares/errorHandler";
 
 dotenv.config();
 
-const app: Express = express();
+const app = express();
 const port = process.env.PORT || 3000;
 
 const corsOptions = {

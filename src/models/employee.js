@@ -1,7 +1,5 @@
 import mongoose from "mongoose";
 
-type Level = "junior" | "mid" | "senior";
-
 const employeeSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -12,7 +10,7 @@ const employeeSchema = new mongoose.Schema({
     required: [true, "Position is required"],
   },
   level: {
-    type: String as unknown as Level,
+    type: String,
     required: [true, "Level is required"],
   },
   salary: {

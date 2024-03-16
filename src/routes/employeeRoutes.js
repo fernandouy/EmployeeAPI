@@ -1,5 +1,5 @@
-import express, { Request, Response } from "express";
-import Employee from "../models/employee";
+import express from "express";
+
 import {
   createEmployee,
   deleteEmployee,

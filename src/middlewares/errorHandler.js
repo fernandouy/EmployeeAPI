@@ -1,14 +1,13 @@
-import { NextFunction, Request, Response } from "express";
 import CustomError from "../utils/CustomError";
 import dotenv from "dotenv";
 
 dotenv.config();
 
 const errorHandler = (
-  error: Error,
-  req: Request,
-  res: Response,
-  next: NextFunction
+  error,
+  req,
+  res,
+  next
 ) => {
   if (error instanceof CustomError) {
     return res.status(error.statusCode).json({
